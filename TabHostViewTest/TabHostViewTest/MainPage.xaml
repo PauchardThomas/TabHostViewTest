@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="TabHostViewTest.MainPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:TabSharpnado="clr-namespace:Sharpnado.Presentation.Forms.CustomViews.Tabs;assembly=Sharpnado.Presentation.Forms"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:tabhostviewtest="clr-namespace:TabHostViewTest"
+             mc:Ignorable="d">
+
+    <StackLayout>
+        <Label BackgroundColor="Red" FontSize="Large" HeightRequest="50" Text="{Binding Items.Name}" TextColor="White" />
+        <Button BackgroundColor="Orange" Command="{Binding ChangeItemsCommand}" CornerRadius="20" Text="Load Items" TextColor="White" />
+        <Label Text="{Binding Items.CurrentIndex, StringFormat='CurrentIndex : {0}'}" />
+        <tabhostviewtest:TabHostViewExtended x:Name="TabHost" Margin="0,0" ItemsSource="{Binding Items.ListItems}" SelectedIndex="{Binding Items.CurrentIndex, Mode=TwoWay}" ShadowType="None">
+            <tabhostviewtest:TabHostViewExtended.ItemTemplate>
+                <DataTemplate>
+                    <TabSharpnado:UnderlinedTabItem BackgroundColor="Orange" Label="{Binding Name}" SelectedTabColor="Blue" />
+                </DataTemplate>
+            </tabhostviewtest:TabHostViewExtended.ItemTemplate>
+        </tabhostviewtest:TabHostViewExtended>
+
+    </StackLayout>
+
+</ContentPage>
